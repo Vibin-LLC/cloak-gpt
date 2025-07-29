@@ -1,0 +1,160 @@
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+webview {
+  flex: 1;
+}
+
+#chatgpt-webview{
+  flex: 1;
+  height: 100%;
+}
+
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Main app container */
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ChatGPT iframe/webview styles */
+.chatgpt-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Fake cursor styles */
+.fake-cursor {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(66, 133, 244, 0.6);
+  border: 2px solid white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.fake-cursor.clicking {
+  transform: translate(-50%, -50%) scale(0.9);
+  background-color: rgba(255, 64, 129, 0.8);
+}
+
+/* Loading indicator */
+.iframe-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error message */
+.iframe-error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(30, 30, 30, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 1000;
+}
+
+.iframe-error h2 {
+  margin-top: 0;
+  color: #ff6b6b;
+}
+
+.iframe-error p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.iframe-error .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.iframe-error button {
+  background-color: #4a86e8;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.iframe-error button:hover {
+  background-color: #3b78e7;
+}
+
+/* Style for capture mode */
+.capture-mode {
+  cursor: none !important;
+}
+
+.capture-mode * {
+  cursor: none !important;
+}

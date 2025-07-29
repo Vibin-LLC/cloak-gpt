@@ -1,0 +1,8 @@
+{
+  "name": "cloak-gpt-overlay-src",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Source files for Cloak GPT Overlay",
+  "types": "./globals.d.ts",
+  "type": "module"
+}

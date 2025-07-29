@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghost GPT Overlay</title>
+  <link rel="stylesheet" href="./App.css">
+  <style>
+    #debug-overlay {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #00ff00;
+      padding: 10px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 12px;
+      line-height: 1.4;
+      z-index: 9999999;
+      max-width: 80%;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <!-- React will render here -->
+  </div>
+
+  <!-- Debug overlay -->
+  <div id="debug-overlay"></div>
+
+  <script>
+    console.log('Index.html loaded');
+
+    // Debug log function
+    function debugLog(message) {
+      console.log(`[DEBUG] ${message}`);
+
+      const debugOverlay = document.getElementById('debug-overlay');
+      if (debugOverlay) {
+        if (debugOverlay.style.display === 'none') {
+          debugOverlay.style.display = 'block';
+        }
+
+        const entry = document.createElement('div');
+        entry.textContent = `${new Date().toISOString().substr(11, 8)}: ${message}`;
+        debugOverlay.appendChild(entry);
+
+        // Scroll to bottom
+        debugOverlay.scrollTop = debugOverlay.scrollHeight;
+
+        // Limit entries
+        while (debugOverlay.childNodes.length > 20) {
+          debugOverlay.removeChild(debugOverlay.firstChild);
+        }
+      }
+    }
+
+    // Error handling
+    window.onerror = function(msg, url, line) {
+      debugLog(`ERROR: ${msg} at ${url}:${line}`);
+      return false;
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      debugLog('DOM content loaded');
+
+      // Toggle debug overlay with Alt+D
+      document.addEventListener('keydown', (e) => {
+        if (e.altKey && e.key === 'd') {
+          const debugOverlay = document.getElementById('debug-overlay');
+          if (debugOverlay) {
+            debugOverlay.style.display = debugOverlay.style.display === 'none' ? 'block' : 'none';
+          }
+        }
+      });
+    });
+  </script>
+
+  <!-- This script will be resolved relative to the HTML file location -->
+  <script type="module" src="./index.js"></script>
+</body>
+</html>

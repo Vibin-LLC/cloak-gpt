@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+  },
+  "include": ["src/main.ts", "src/preload.ts", "src/native/**/*", "src/types/**/*"],
+  "exclude": ["node_modules", "src/renderer/**/*"]
+}

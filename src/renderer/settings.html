@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cloak GPT Settings</title>
+    <link rel="stylesheet" href="Settings.css">
+</head>
+<body>
+    <div class="settings-container">
+        <h1>Cloak GPT Settings</h1>
+
+        <div class="section">
+            <div class="section-title">Authentication</div>
+            <div id="login-container">
+                <button id="auth-button" class="button auth-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                    </svg>
+                    Sign into ChatGPT
+                </button>
+            </div>
+            <div id="logout-container" style="display: none;">
+                <button id="logout-button" class="button logout-button">Log Out of ChatGPT</button>
+                <div id="user-info" class="user-info-container">
+                    <div class="user-email">Loading user info...</div>
+                    <div class="user-id">User ID: Loading...</div>
+                </div>
+            </div>
+
+            <style>
+                .user-info-container {
+                    margin-top: 12px;
+                    padding: 10px;
+                    background-color: rgba(0, 0, 0, 0.1);
+                    border-radius: 6px;
+                    font-size: 13px;
+                }
+                .user-email {
+                    font-weight: bold;
+                    margin-bottom: 4px;
+                    word-break: break-all;
+                }
+                .user-id {
+                    font-size: 11px;
+                    opacity: 0.8;
+                    margin-top: 4px;
+                    word-break: break-all;
+                }
+            </style>
+        </div>
+
+
+
+        <div class="section">
+            <div class="section-title">Appearance</div>
+            <div class="setting-row">
+                <label class="setting-label">Window Transparency</label>
+                <div class="slider-container">
+                    <input type="range" id="opacity-slider" min="0.5" max="1" step="0.05" value="0.95">
+                    <span id="opacity-value" class="slider-value">95%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Interaction</div>
+            <div class="setting-row">
+                <label class="setting-label">Stealth Cursor Mode</label>
+                <label class="switch">
+                    <input type="checkbox" id="stealth-cursor-toggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div id="stealth-cursor-warning" class="warning">
+                Warning: Disabling stealth cursor mode may affect the app's ability to work with fullscreen applications
+            </div>
+        </div>
+
+                <div class="section">
+            <div class="section-title">Keyboard Shortcuts</div>
+            <div class="shortcuts-list">
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Show/hide overlay</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">B</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Open/close settings</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">,</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Submit message</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">↩</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Clear input</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">⌫</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Take screenshot</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">S</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Toggle layout</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">V</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Switch models</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">M</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">New chat</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">N</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Increase transparency</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">+</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Decrease transparency</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">-</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Move cursor</div>
+                    <div class="shortcut-combo">
+                        <span class="key">↑</span>
+                        <span class="key">↓</span>
+                        <span class="key">←</span>
+                        <span class="key">→</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Click at cursor</div>
+                    <div class="shortcut-combo">
+                        <span class="key">↩</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Scroll chat up</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">↑</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Scroll chat down</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">↓</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Move window</div>
+                    <div class="shortcut-combo">
+                        <span class="key">⌥</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">↑↓←→</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Reset to defaults</div>
+                    <div class="shortcut-combo">
+                        <span class="key">⌥</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">R</span>
+                    </div>
+                </div>
+
+                <div class="shortcut-row">
+                    <div class="shortcut-label">Quit application</div>
+                    <div class="shortcut-combo">
+                        <span class="key cmd">⌘</span>
+                        <span class="key-plus">+</span>
+                        <span class="key">Q</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button id="reset-button" class="button reset-button">Reset to Defaults</button>
+            <button id="cancel-button" class="button cancel-button">Cancel</button>
+            <button id="save-button" class="button save-button">Save Changes</button>
+        </div>
+    </div>
+
+    <div id="debug-log"></div>
+
+    <style>
+        .pro-upgrade-container {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .price-info {
+            text-align: center;
+            margin-top: 6px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+                .pro-features-list {
+            list-style: none;
+            padding: 12px 15px;
+            margin: 10px 0 0 0;
+            background-color: rgba(138, 43, 226, 0.1);
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .pro-features-list li {
+            padding: 5px 0;
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+            padding-left: 4px;
+        }
+
+        .pro-features-list li ✓ {
+            color: #a665ff;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .pro-features-list li:not(:last-child) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+            margin-bottom: 3px;
+        }
+
+
+
+        /* Keyboard shortcuts list styling */
+        .shortcuts-list {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .shortcuts-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .shortcuts-list::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .shortcuts-list::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 3px;
+        }
+
+        .shortcut-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .shortcut-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .shortcut-combo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333336;
+            color: white;
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-size: 14px;
+            min-width: 24px;
+            height: 28px;
+            margin-right: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .key.cmd {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .key-plus {
+            margin: 0 4px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+        }
+
+        /* For Windows users, show Ctrl instead of ⌘ */
+        @media not all and (platform: macos) {
+            .key.cmd:before {
+                content: 'Ctrl';
+                font-size: 14px;
+            }
+            .key.cmd {
+                display: inline-flex;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        }
+    </style>
+
+    <script>
+        // Debug logging function
+        function debugLog(message) {
+            const debugLogElement = document.getElementById('debug-log');
+            if (debugLogElement) {
+                debugLogElement.style.display = 'block';
+                debugLogElement.textContent += `[DEBUG] ${message}\n`;
+            }
+        }
+
+        // Get references to UI elements
+        const opacitySlider = document.getElementById('opacity-slider');
+        const opacityValue = document.getElementById('opacity-value');
+        const saveButton = document.getElementById('save-button');
+        const cancelButton = document.getElementById('cancel-button');
+        const resetButton = document.getElementById('reset-button');
+
+        // Function to update UI based on login state
+
+
+                // Function to update the ChatGPT authentication UI
+        function updateChatGPTAuthUI(loginResult) {
+            const loginContainer = document.getElementById('login-container');
+            const logoutContainer = document.getElementById('logout-container');
+            const userEmail = document.querySelector('.user-email');
+            const userId = document.querySelector('.user-id');
+
+
+            // Handle both boolean and object result for backwards compatibility
+            const isLoggedIn = typeof loginResult === 'boolean' ? loginResult :
+                              (loginResult && loginResult.isLoggedIn);
+
+            if (loginContainer && logoutContainer) {
+                if (isLoggedIn) {
+                    loginContainer.style.display = 'none';
+                    logoutContainer.style.display = 'block';
+                    debugLog('User is logged in to ChatGPT, showing logout button');
+
+                    // Update user info if available
+                    if (loginResult && typeof loginResult === 'object') {
+                        if (userEmail && loginResult.email) {
+                            userEmail.textContent = loginResult.email;
+                        }
+
+                        if (userId && loginResult.userId) {
+                            userId.textContent = 'User ID: ' + loginResult.userId;
+                        }
+
+
+                    }
+                } else {
+                    loginContainer.style.display = 'block';
+                    logoutContainer.style.display = 'none';
+                    debugLog('User is not logged in to ChatGPT, showing login button');
+
+
+                }
+            }
+        }
+
+        // Check login status when window loads
+        window.addEventListener('DOMContentLoaded', async () => {
+            debugLog('Settings window loaded');
+
+            // Load current opacity
+            if (window.electronAPI && window.electronAPI.getWindowOpacity) {
+                try {
+                    const opacity = await window.electronAPI.getWindowOpacity();
+                    if (opacitySlider && opacityValue) {
+                        opacitySlider.value = opacity.toString();
+                        opacityValue.textContent = `${Math.round(opacity * 100)}%`;
+                    }
+                } catch (err) {
+                    debugLog(`Error getting opacity: ${err}`);
+                }
+            }
+
+            // Check if user is logged into ChatGPT
+            if (window.electronAPI && window.electronAPI.checkLoginStatus) {
+                try {
+                    const loginResult = await window.electronAPI.checkLoginStatus();
+                    debugLog('ChatGPT login status: ' + JSON.stringify(loginResult));
+                    updateChatGPTAuthUI(loginResult);
+                } catch (err) {
+                    debugLog('Error checking ChatGPT login status: ' + err);
+                }
+            }
+
+
+
+            // Set up event handlers for slider
+            if (opacitySlider && opacityValue) {
+                opacitySlider.addEventListener('input', () => {
+                    const value = parseFloat(opacitySlider.value);
+                    opacityValue.textContent = `${Math.round(value * 100)}%`;
+
+                    // Apply opacity in real-time
+                    if (window.electronAPI && window.electronAPI.setWindowOpacity) {
+                        window.electronAPI.setWindowOpacity(value);
+                    }
+                });
+            }
+
+            // Set up stealth cursor toggle
+            const stealthCursorToggle = document.getElementById('stealth-cursor-toggle');
+            const stealthCursorWarning = document.getElementById('stealth-cursor-warning');
+
+            if (stealthCursorToggle && stealthCursorWarning) {
+                // Get current stealth cursor setting
+                if (window.electronAPI && window.electronAPI.getStealthCursorEnabled) {
+                    try {
+                        const isEnabled = await window.electronAPI.getStealthCursorEnabled();
+                        stealthCursorToggle.checked = isEnabled;
+                        stealthCursorWarning.style.display = isEnabled ? 'none' : 'block';
+                    } catch (err) {
+                        debugLog(`Error getting stealth cursor setting: ${err}`);
+                    }
+                }
+
+                // Handle toggle changes
+                stealthCursorToggle.addEventListener('change', () => {
+                    const isEnabled = stealthCursorToggle.checked;
+
+                    // Show/hide warning
+                    stealthCursorWarning.style.display = isEnabled ? 'none' : 'block';
+
+                    // Save setting
+                    if (window.electronAPI && window.electronAPI.setStealthCursorEnabled) {
+                        window.electronAPI.setStealthCursorEnabled(isEnabled);
+
+                        // Display immediate feedback about the change
+                        const feedbackMessage = document.createElement('div');
+                        feedbackMessage.textContent = isEnabled
+                            ? 'Stealth cursor enabled - clicks now pass through to underlying apps'
+                            : 'Normal cursor enabled - clicks now work on ChatGPT overlay';
+                        feedbackMessage.style.position = 'fixed';
+                        feedbackMessage.style.bottom = '20px';
+                        feedbackMessage.style.left = '50%';
+                        feedbackMessage.style.transform = 'translateX(-50%)';
+                        feedbackMessage.style.backgroundColor = isEnabled ? 'rgba(16, 163, 127, 0.9)' : 'rgba(0, 122, 255, 0.9)';
+                        feedbackMessage.style.color = 'white';
+                        feedbackMessage.style.padding = '10px 20px';
+                        feedbackMessage.style.borderRadius = '6px';
+                        feedbackMessage.style.zIndex = '9999';
+                        feedbackMessage.style.fontWeight = 'bold';
+                        feedbackMessage.style.fontSize = '14px';
+                        feedbackMessage.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+                        feedbackMessage.style.transition = 'opacity 0.3s ease-in-out';
+
+                        document.body.appendChild(feedbackMessage);
+
+                        // Remove the message after 5 seconds
+                        setTimeout(() => {
+                            feedbackMessage.style.opacity = '0';
+                            setTimeout(() => {
+                                if (feedbackMessage.parentNode) {
+                                    feedbackMessage.parentNode.removeChild(feedbackMessage);
+                                }
+                            }, 300);
+                        }, 5000);
+                    }
+                });
+            }
+
+            // Set up logout button
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton && window.electronAPI && window.electronAPI.logoutFromChatGPT) {
+                logoutButton.addEventListener('click', async () => {
+                    debugLog('Logout button clicked');
+
+                    // Show confirmation dialog
+                    const confirmed = confirm('Are you sure you want to log out of ChatGPT?');
+                    if (!confirmed) return;
+
+                    try {
+                        logoutButton.textContent = 'Logging out...';
+                        logoutButton.disabled = true;
+
+                        // Call the logout function
+                        const success = await window.electronAPI.logoutFromChatGPT();
+                        debugLog('Logout result: ' + success);
+
+                        if (success) {
+                            // Update UI to show login button
+                            const loginContainer = document.getElementById('login-container');
+                            const logoutContainer = document.getElementById('logout-container');
+
+                            if (loginContainer && logoutContainer) {
+                                loginContainer.style.display = 'block';
+                                logoutContainer.style.display = 'none';
+                            }
+
+                            // Show success message
+                            setTimeout(() => {
+                                alert('Successfully logged out of ChatGPT');
+                            }, 500);
+                        } else {
+                            // Show error message
+                            alert('Failed to log out. Please try again.');
+                            logoutButton.textContent = 'Log Out of ChatGPT';
+                            logoutButton.disabled = false;
+                        }
+                    } catch (err) {
+                        debugLog('Error logging out: ' + err);
+                        alert('An error occurred while logging out.');
+                        logoutButton.textContent = 'Log Out of ChatGPT';
+                        logoutButton.disabled = false;
+                    }
+                });
+            }
+
+            // Set up save button
+            if (saveButton) {
+                saveButton.addEventListener('click', async () => {
+                    debugLog('Save button clicked');
+
+                    if (window.electronAPI && window.electronAPI.saveSettings && opacitySlider) {
+                        try {
+                            const transparency = parseFloat(opacitySlider.value);
+                            await window.electronAPI.saveSettings({ transparency });
+                            debugLog('Settings saved');
+
+                            // Close the settings window
+                            window.close();
+                        } catch (err) {
+                            debugLog(`Error saving settings: ${err}`);
+                        }
+                    }
+                });
+            }
+
+            // Set up cancel button
+            if (cancelButton) {
+                cancelButton.addEventListener('click', () => {
+                    debugLog('Cancel button clicked');
+                    window.close();
+                });
+            }
+
+            // Set up reset button
+            if (resetButton) {
+                resetButton.addEventListener('click', async () => {
+                    debugLog('Reset button clicked');
+
+                    if (window.electronAPI && window.electronAPI.resetSettings) {
+                        try {
+                            await window.electronAPI.resetSettings();
+
+                            // Update the slider with default values
+                            if (opacitySlider && opacityValue) {
+                                opacitySlider.value = '0.95';
+                                opacityValue.textContent = '95%';
+                            }
+
+                            debugLog('Settings reset to defaults');
+                        } catch (err) {
+                            debugLog(`Error resetting settings: ${err}`);
+                        }
+                    }
+                });
+            }
+
+            // Set up upgrade buttons
+
+
+
+
+
+
+            // Set up the auth button for ChatGPT
+            const authButton = document.getElementById('auth-button');
+            if (authButton && window.electronAPI && window.electronAPI.openAuthWindow) {
+                authButton.addEventListener('click', async () => {
+                    debugLog('Auth button clicked, opening ChatGPT auth window');
+                    try {
+                        await window.electronAPI.openAuthWindow();
+                    } catch (err) {
+                        debugLog(`Error opening ChatGPT auth window: ${err}`);
+                    }
+                });
+            }
+
+
+
+                        // Check ChatGPT login status again when auth window is closed
+            // This ensures we detect successful logins
+            if (window.electronAPI && window.electronAPI.onAuthWindowClosed) {
+                window.electronAPI.onAuthWindowClosed(async () => {
+                    debugLog('Auth window closed, checking ChatGPT login status');
+
+                    // Wait a moment for all state changes to propagate
+                    setTimeout(async () => {
+                        if (window.electronAPI && window.electronAPI.checkLoginStatus) {
+                            try {
+                                const loginResult = await window.electronAPI.checkLoginStatus();
+                                debugLog('Updated ChatGPT login status: ' + JSON.stringify(loginResult));
+                                updateChatGPTAuthUI(loginResult);
+                            } catch (err) {
+                                debugLog('Error checking updated ChatGPT login status: ' + err);
+                            }
+                        }
+                    }, 1000);
+                });
+            }
+        });
+
+        // Add keyboard shortcut to close settings with Command+Comma
+        window.addEventListener('keydown', (e) => {
+            // Check for Command+Comma (macOS) or Control+Comma (Windows/Linux)
+            const isCommandOrControlComma =
+                ((navigator.platform.includes('Mac') && e.metaKey) ||
+                (!navigator.platform.includes('Mac') && e.ctrlKey)) &&
+                e.key === ',';
+
+            if (isCommandOrControlComma) {
+                debugLog('Command+Comma pressed - closing settings');
+                window.close();
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
