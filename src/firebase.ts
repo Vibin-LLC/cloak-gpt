@@ -1,7 +1,11 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics, logEvent as firebaseLogEvent, setUserId as firebaseSetUserId, setUserProperties as firebaseSetUserProperties } from 'firebase/analytics';
 import { shell } from 'electron';
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Load environment variables from client.env
+dotenv.config({ path: path.resolve(process.cwd(), '.env.client') });
 
 // Your web app's Firebase configuration
 // Replace with your actual Firebase config values

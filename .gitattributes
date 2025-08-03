@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Encrypt environment files with git-crypt
+.env.client filter=git-crypt diff=git-crypt
+.env.dev filter=git-crypt diff=git-crypt

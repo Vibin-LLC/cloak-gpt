@@ -2,7 +2,7 @@ const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 const os = require('os');
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config({ path: './env.dev' });
 
 function getIcon() {
   const platformArg = process.argv.find(arg => arg.startsWith('--platform='));
