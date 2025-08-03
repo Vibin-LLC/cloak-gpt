@@ -1,6 +1,7 @@
-# Cloak GPT
+# Cloak GPT <img src="https://github.com/Vibin-LLC/cloak-gpt/blob/main/media/og-icon.png?raw=true" alt="Cloak GPT Logo" width="50">
 
-A transparent ChatGPT overlay desktop application that allows you to use ChatGPT without switching between windows.
+
+A translucent ChatGPT overlay desktop application that allows you to use ChatGPT.com undetectably (invisible to screen share, hidden keystrokes) without switching between windows.
 
 ## Features
 
@@ -9,6 +10,24 @@ A transparent ChatGPT overlay desktop application that allows you to use ChatGPT
 - Stealth cursor mode for discreet usage
 - Multiple layout options
 - Automatic updates via GitHub Releases
+- Undetectable by other applications: invisible during screen sharing and hides keystrokes from other apps
+
+## Keyboard Shortcuts
+
+- Show/hide overlay: ⌘ + B
+- Open/close settings: ⌘ + ,
+- Submit message: ⌘ + ↩
+- Clear input: ⌘ + ⌫
+- Take screenshot: ⌘ + S
+- Toggle layout: ⌘ + V
+- Switch models: ⌘ + M
+- New chat: ⌘ + N
+- Increase transparency: ⌘ + +
+- Decrease transparency: ⌘ + -
+- Move cursor: ↑ ↓ ← →
+- Click at cursor: ↩
+- Scroll chat up: ⌘ + ↑
+- Scroll chat down: ⌘ + ↓
 
 ## Auto-Update Setup
 
@@ -42,17 +61,6 @@ This application uses Electron Forge with automatic updates via GitHub Releases.
    npx electron-forge publish
    ```
 
-### GitHub Token Setup
-
-For automated publishing, ensure your GitHub repository has the necessary permissions:
-
-1. Go to your repository settings
-2. Navigate to Actions > General
-3. Under "Workflow permissions", select "Read and write permissions"
-4. Save the changes
-
-The `GITHUB_TOKEN` is automatically provided by GitHub Actions.
-
 ## Development
 
 ```bash
@@ -67,15 +75,12 @@ npm start
 
 # Package for distribution
 npm run make
-
-# Publish to GitHub Releases
-npx electron-forge publish
 ```
 
 ## Building for Production
 
 ```bash
-# Build and package for macOS
+# Build and packages for production
 npm run make
 
 # The built application will be in the `out/` directory
@@ -95,3 +100,8 @@ The update process is seamless and requires no user intervention.
 - If auto-updates aren't working, check that the GitHub repository is public
 - Ensure the GitHub token has the necessary permissions
 - Verify that releases are being created with the correct assets
+
+
+# Upcoming Features
+- Release & Optimize Windows build
+- Support [Google Gemani](https://gemini.google.com/) , [Claude](https://claude.ai/)

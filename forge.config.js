@@ -17,26 +17,43 @@ function getIcon() {
   }
 }
 
-
 module.exports = {
   packagerConfig: {
     asar: true,
     icon: getIcon(),
-  },
-  osxSign: {
+    arch: ['x64', 'arm64'],
+
+    // Signing configuration
+    osxSign: {
+      'hardened-runtime': true,
+      entitlements: 'entitlements.plist',
+      'entitlements-inherit': 'entitlements.plist',
+      identity: 'Developer ID Application: Vibin LLC (U99WN9B24L)',
+      keychainProfile: 'cloak-gpt'
+    },
+
+    // Notarization configuration (must also be in packagerConfig)
     osxNotarize: {
       keychainProfile: 'cloak-gpt'
-    }
+    },
   },
+
   rebuildConfig: {},
+
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      platforms: ['win32'],
+      config: {
+        arch: ['x64', 'arm64'],
+      },
     },
     {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'win32'],
+      config: {
+        arch: ['x64', 'arm64'],
+      },
     },
     {
       name: '@electron-forge/maker-deb',
@@ -47,6 +64,7 @@ module.exports = {
       config: {},
     },
   ],
+
   publishers: [
     {
       name: '@electron-forge/publisher-github',
@@ -60,13 +78,12 @@ module.exports = {
       }
     }
   ],
+
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',
       config: {},
     },
-    // Fuses are used to enable/disable various Electron functionality
-    // at package time, before code signing the application
     new FusesPlugin({
       version: FuseVersion.V1,
       [FuseV1Options.RunAsNode]: false,
@@ -77,4 +94,4 @@ module.exports = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
-};
+}

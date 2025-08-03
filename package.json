@@ -1,5 +1,6 @@
 {
-  "name": "cloak gpt",
+  "name": "cloak-gpt",
+  "productName": "CloakGPT",
   "version": "0.0.1",
   "main": "dist/main.js",
   "scripts": {
@@ -27,6 +28,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.4",
     "axios": "^1.9.0",
+    "dotenv": "^17.2.1",
     "electron-log": "^5.4.1",
     "electron-squirrel-startup": "^1.0.1",
     "electron-updater": "^6.6.2",
@@ -48,7 +50,6 @@
     "@electron-forge/publisher-github": "^7.8.1",
     "@electron/fuses": "^1.8.0",
     "@electron/rebuild": "^3.7.2",
-    "dotenv": "^17.2.1",
     "electron": "^36.6.0",
     "esbuild": "^0.20.2",
     "mocha": "^10.2.0",
